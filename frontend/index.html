@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <button onclick="fetchData()">Call API</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function fetchData() {
+            try {
+                const res = await axios.get('http://127.0.0.1:8000/test/');
+                document.getElementById('result').textContent = JSON.stringify(res.data, null, 2);
+            } catch (err) {
+                document.getElementById('result').textContent = 'Error: ' + err.message;
+            }
+        }
+    </script>
+</body>
+</html>
