@@ -28,7 +28,6 @@ def cars(request):
     context = {'products': products}
     return render(request, 'base/cars.html', context)
 
-@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register_user(request):
