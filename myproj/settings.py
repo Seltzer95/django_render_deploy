@@ -70,6 +70,9 @@ REST_FRAMEWORK = {
 }
 
 CSRF_TRUSTED_ORIGINS = ['https://django-deploy-6zoo.onrender.com']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+ALLOWED_HOSTS = ['django-deploy-6zoo.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 SIMPLE_JWT = {
