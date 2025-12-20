@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from .models import Product, Category
 from django.contrib.auth.models import User
 from rest_framework import status
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 
@@ -26,6 +28,7 @@ def cars(request):
     context = {'products': products}
     return render(request, 'base/cars.html', context)
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register_user(request):
