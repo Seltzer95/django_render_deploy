@@ -36,3 +36,32 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.desc} {str(self.price)}"
+    
+class Order(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_paid = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Order {self.id} by {self.user.username}"
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(
+        Order,
+        on_delete=models.CASCADE,
+        related_name='items'
+    )
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.product} x {self.quantity}"

@@ -9,6 +9,10 @@ urlpatterns = [
     path('hello/', views.hello),
     path('test/', views.test),
     path('cars/', views.cars, name='cars'),
-    path('login/', TokenObtainPairView.as_view()),
+    path('login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('register/', views.register_user),
+    path('members/', views.only_members),
+    path('buy/', views.buy_product, name='buy_product'),
+    path('orders/', views.my_orders, name='my_orders'),
 ]
+
